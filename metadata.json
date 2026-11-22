@@ -1,0 +1,6 @@
+{
+  "name": "Niko Streaming Revenda",
+  "description": "Plataforma de IPTV 4K, Filmes, Séries e Painel de Revenda Niko Streaming com ativação imediata e servidores Anti-Freeze.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

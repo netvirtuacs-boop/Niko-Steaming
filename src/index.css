@@ -1,0 +1,308 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: #121216;
+    color: #F8FAFC;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+@keyframes testimonialSlideIn {
+  from {
+    opacity: 0;
+    transform: translate3d(14px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-testimonial-in {
+  animation: testimonialSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes cinemaCutPanA {
+  0% {
+    transform: scale(1.02) translate3d(0%, 0%, 0);
+  }
+  100% {
+    transform: scale(1.13) translate3d(-2.2%, -1%, 0);
+  }
+}
+
+@keyframes cinemaCutPanB {
+  0% {
+    transform: scale(1.1) translate3d(-2%, 1%, 0);
+  }
+  100% {
+    transform: scale(1.02) translate3d(1.5%, -0.8%, 0);
+  }
+}
+
+@keyframes cinemaCutPanC {
+  0% {
+    transform: scale(1.04) translate3d(1.8%, 0.6%, 0);
+  }
+  100% {
+    transform: scale(1.14) translate3d(-1.5%, -1.2%, 0);
+  }
+}
+
+.player-pan-a {
+  animation: cinemaCutPanA 3.6s ease-out forwards;
+}
+
+.player-pan-b {
+  animation: cinemaCutPanB 3.6s ease-out forwards;
+}
+
+.player-pan-c {
+  animation: cinemaCutPanC 3.6s ease-out forwards;
+}
+
+@keyframes buttonSheen {
+  0% {
+    transform: translateX(-140%) skewX(-20deg);
+  }
+  45%, 100% {
+    transform: translateX(240%) skewX(-20deg);
+  }
+}
+
+.btn-glow-shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background-image: linear-gradient(135deg, #EF4444 0%, #DC2626 55%, #E11D48 100%);
+  box-shadow: 0 10px 28px -6px rgba(239, 68, 68, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.btn-glow-shine::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    radial-gradient(circle 130px at var(--mx, 50%) var(--my, 50%), rgba(251, 191, 36, 0.38), transparent 72%),
+    linear-gradient(115deg, #B91C1C 0%, #C2410C 28%, #B45309 52%, #BE185D 78%, #047857 100%);
+  background-size: 100% 100%, 240% 240%;
+  background-position: 0% 0%, var(--mx, 50%) var(--my, 50%);
+  opacity: 0;
+  transition: opacity 240ms ease, background-position 100ms ease-out;
+  pointer-events: none;
+}
+
+.btn-glow-shine:hover,
+.btn-glow-shine:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px -6px rgba(245, 158, 11, 0.68), 0 0 22px -4px rgba(239, 68, 68, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.38);
+}
+
+.btn-glow-shine:hover::before,
+.btn-glow-shine:focus-visible::before {
+  opacity: 1;
+}
+
+.btn-glow-shine::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  z-index: 1;
+  width: 45%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  animation: buttonSheen 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.btn-plan-secondary {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.03) 100%);
+  box-shadow: 0 8px 22px -8px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.btn-plan-secondary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    radial-gradient(circle 130px at var(--mx, 50%) var(--my, 50%), rgba(251, 191, 36, 0.36), transparent 72%),
+    linear-gradient(115deg, #B91C1C 0%, #C2410C 28%, #B45309 52%, #BE185D 78%, #047857 100%);
+  background-size: 100% 100%, 240% 240%;
+  background-position: 0% 0%, var(--mx, 50%) var(--my, 50%);
+  opacity: 0;
+  transition: opacity 240ms ease, background-position 100ms ease-out;
+  pointer-events: none;
+}
+
+.btn-plan-secondary:hover,
+.btn-plan-secondary:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(251, 191, 36, 0.72);
+  box-shadow: 0 14px 34px -8px rgba(245, 158, 11, 0.62), inset 0 1px 0 rgba(255, 255, 255, 0.34);
+}
+
+.btn-plan-secondary:hover::before,
+.btn-plan-secondary:focus-visible::before {
+  opacity: 1;
+}
+
+.btn-plan-tab {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid transparent;
+  transition: border-color 200ms ease, box-shadow 200ms ease, color 200ms ease, background-color 200ms ease;
+}
+
+.btn-plan-tab-active {
+  border-color: rgba(255, 255, 255, 0.42);
+  background-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.btn-plan-tab::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    radial-gradient(circle 110px at var(--mx, 50%) var(--my, 50%), rgba(245, 158, 11, 0.32), transparent 72%),
+    linear-gradient(115deg, rgba(185, 28, 28, 0.55) 0%, rgba(194, 65, 12, 0.55) 45%, rgba(190, 24, 93, 0.55) 100%);
+  background-size: 100% 100%, 220% 220%;
+  background-position: 0% 0%, var(--mx, 50%) var(--my, 50%);
+  opacity: 0;
+  transition: opacity 220ms ease, background-position 100ms ease-out;
+  pointer-events: none;
+}
+
+.btn-plan-tab:hover,
+.btn-plan-tab:focus-visible {
+  border-color: rgba(251, 191, 36, 0.65);
+  box-shadow: 0 10px 24px -8px rgba(245, 158, 11, 0.45);
+}
+
+.btn-plan-tab:hover::before,
+.btn-plan-tab:focus-visible::before {
+  opacity: 1;
+}
+
+.card-luminous {
+  background-image: linear-gradient(155deg, rgba(34, 32, 38, 0.46) 0%, rgba(22, 21, 26, 0.56) 58%, rgba(16, 15, 20, 0.64) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 18px 42px -12px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.26);
+  backdrop-filter: blur(20px) saturate(185%) brightness(1.06);
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.card-luminous:hover {
+  border-color: rgba(255, 255, 255, 0.38);
+  box-shadow: 0 22px 50px -10px rgba(239, 68, 68, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.38);
+}
+
+.card-luminous-featured {
+  background-image: linear-gradient(150deg, rgba(68, 24, 30, 0.54) 0%, rgba(30, 22, 26, 0.64) 52%, rgba(20, 16, 20, 0.7) 100%);
+  border: 1px solid rgba(248, 113, 113, 0.64);
+  box-shadow: 0 20px 52px -10px rgba(239, 68, 68, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.32);
+  backdrop-filter: blur(20px) saturate(190%) brightness(1.08);
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.card-luminous-featured:hover {
+  border-color: rgba(252, 165, 165, 0.88);
+  box-shadow: 0 24px 58px -8px rgba(239, 68, 68, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.42);
+}
+
+@keyframes progressGrow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes progressSheen {
+  0% {
+    transform: translateX(-140%);
+  }
+  55%, 100% {
+    transform: translateX(260%);
+  }
+}
+
+.progress-track {
+  background-color: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.progress-fill-animated {
+  position: relative;
+  overflow: hidden;
+  transform-origin: left center;
+  animation: progressGrow 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.progress-fill-live {
+  position: relative;
+  overflow: hidden;
+  transform-origin: left center;
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.progress-fill-animated::after,
+.progress-fill-live::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 45%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.38), transparent);
+  animation: progressSheen 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-testimonial-in,
+  .btn-glow-shine::after,
+  .progress-fill-animated,
+  .progress-fill-animated::after,
+  .progress-fill-live::after,
+  .player-pan-a,
+  .player-pan-b,
+  .player-pan-c {
+    animation: none;
+  }
+  .btn-glow-shine:hover,
+  .btn-plan-secondary:hover {
+    transform: none;
+  }
+}
+
